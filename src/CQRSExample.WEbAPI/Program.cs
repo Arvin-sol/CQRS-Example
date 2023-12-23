@@ -1,5 +1,13 @@
 
+using CQRSExample.Application.Commands;
+using CQRSExample.Application.Commands.CommandHandlers;
+using CQRSExample.Application.Queies;
+using CQRSExample.Application.Queies.QueryHandlers;
+using CQRSExample.Domain.Entities;
+using CQRSExample.Domain.IRepositories;
 using CQRSExample.Infrastructure.Common;
+using CQRSExample.Infrastructure.Reposities;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CQRSExample.WEbAPI
@@ -18,7 +26,9 @@ namespace CQRSExample.WEbAPI
 
 
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
-
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IRequestHandler<CreateUserCommand, bool>, CreateUserCommandHandler>();
+            builder.Services.AddScoped<IRequestHandler<GetAllUserQuery,IEnumerable<User>>,GetAllUserQueryHandler>();
 
 
 

@@ -14,4 +14,8 @@
     <ProjectReference Include="..\CQRSExample.Domain\CQRSExample.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Comman\" />
+  </ItemGroup>
+
 </Project>
